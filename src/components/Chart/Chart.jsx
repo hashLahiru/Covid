@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { fetchDailyData } from "../../api";
+<<<<<<< HEAD
 import { Doughnut } from "react-chartjs-2";
+=======
+import { Line } from "react-chartjs-2";
+>>>>>>> b35afb76b1fddc94b898bdce0aaf032b6d120909
 import styles from "./Chart.module.css";
 
 const Chart = () => {
@@ -13,6 +17,7 @@ const Chart = () => {
 
     fetchAPI();
   });
+<<<<<<< HEAD
   const pieChart = dailyData.length ? (
     <Doughnut
       data={{
@@ -30,6 +35,25 @@ const Chart = () => {
             },
 
             backgroundColor: ["#EE4E5A", "#CC36BF", "#F7945D"],
+=======
+
+  const lineChart = dailyData.length ? (
+    <Line
+      data={{
+        labels: dailyData.map(({ local_new_cases }) => local_new_cases),
+        datasets: [
+          {
+            data: dailyData.map(({ local_total_cases }) => local_total_cases),
+            label: "Infected",
+            borderColor: "#3333ff",
+            fill: true,
+          },
+          {
+            data: dailyData.map(({ local_deaths }) => local_deaths),
+            label: "Deaths",
+            borderColor: "red",
+            backgroundColor: "rgba(255,0,0,0.5)",
+>>>>>>> b35afb76b1fddc94b898bdce0aaf032b6d120909
             fill: true,
           },
         ],
@@ -37,6 +61,7 @@ const Chart = () => {
     />
   ) : null;
 
+<<<<<<< HEAD
   return <div className={styles.container}>{pieChart}</div>;
 };
 export default Chart;
@@ -101,3 +126,8 @@ const ChartPieSummary = ({latest})=>{
   );
 }
 */
+=======
+  return <div className={styles.container}>{lineChart}</div>;
+};
+export default Chart;
+>>>>>>> b35afb76b1fddc94b898bdce0aaf032b6d120909
